@@ -1,0 +1,5 @@
+azure-functions
+pandas>=1.0.3
+matplotlib
+scipy
+numpy

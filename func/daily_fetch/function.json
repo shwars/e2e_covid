@@ -1,0 +1,18 @@
+{
+  "scriptFile": "__init__.py",
+  "bindings": [
+    {
+      "name": "mytimer",
+      "type": "timerTrigger",
+      "direction": "in",
+      "schedule": "0 */5 * * * *"
+    },
+    {
+      "type": "blob",
+      "direction": "out",
+      "name": "outblob",
+      "path": "snapshot/current",
+      "connection": "e2estore_STORAGE"
+    }
+  ]
+}
