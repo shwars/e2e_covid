@@ -18,6 +18,6 @@ def main(mytimer: func.TimerRequest, outblob: func.Out[bytes]) -> None:
     cd = CountryData()
     cd.fetch()
     data = cd.get_country_data(callback=lambda x: logging.info("Computing params for %s", x))
-    b = pickle.dumps(data)
+    b = pickle.dumps(data,protocol=4)
     
     outblob.set(b)
