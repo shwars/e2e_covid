@@ -6,6 +6,7 @@ from scipy.optimize import minimize
 import pandas as pd
 import pickle
 import datetime
+import io
 
 class CountryData():
 
@@ -97,3 +98,22 @@ class CountryData():
             country_data[x] = self.analyze(x)
 
         return country_data
+
+    def plot(population,df,ax=None):
+        n = 0 # get_start_index(df)
+        start_date = df.iloc[n,0]
+        if ax is None:
+            print("Population = {}, Infection start date (>100) = {}".format(population,start_date.date()))
+        df['Days'] = df['Date'].apply(lambda x : (x-start_date).days)
+        df['PI'] = df['Infected'] / population * 100
+        df['Delta_Infected_Gr'] = (df['Infected'].diff()).clip(lower=0) / population * 1000000
+        ax = ax or plt.gca()
+        ax = df.plot('Days','Rt',ax=ax,legend=False,linewidth=3,color='red')
+        ax.axhline(y = 1,linestyle='--', color='red')
+        ax.set_ylim(0,8)
+        ax.set_ylabel('Rt')
+        df.plot(x='Days',y='Delta_Infected_Gr',secondary_y=True,kind='bar',ax=ax,legend=False)#,xticks=df['Days'][::10])
+        ax.set_xlabel('Days',fontsize=14)
+        ax.set_xticks(df['Days'][::10])
+        ax.set_xticklabels(df['Days'][::10])
+        ax.right_ax.set_ylabel('Infected (/day/1m)',fontsize=14)
