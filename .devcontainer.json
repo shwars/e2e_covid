@@ -11,5 +11,5 @@
   },
 
   // Run Bash script in .devcontainer directory
-  "postCreateCommand": "/opt/python/latest/bin/pip install -r ./requirements.txt"
+  "postCreateCommand": "/opt/python/latest/bin/pip install -r ./requirements.txt && npm i -g azure-functions-core-tools@3 --unsafe-perm true"
 }
