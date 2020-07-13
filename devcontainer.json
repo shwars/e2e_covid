@@ -1,0 +1,15 @@
+{
+  // Install ESLint and Peacock extensions
+  "extensions": [
+    "ms-python.python",
+    "ms-azuretools.vscode-azurefunctions",
+    "ms-vscode.azure-account"
+  ],
+
+  "settings": {
+    "python.pythonPath": "/opt/python/latest/bin/python"
+  },
+
+  // Run Bash script in .devcontainer directory
+  "postCreateCommand": "/opt/python/latest/bin/pip install -r ./requirements.txt && npm i -g azure-functions-core-tools@3 --unsafe-perm true"
+}
