@@ -3,7 +3,9 @@ import pandas as pd
 import pickle
 import base64
 import azure.functions as func
-from .slidingsir import *
+from ..shared.slidingsir import *
+import matplotlib.pyplot as plt
+import io
 
 def main(req: func.HttpRequest, covblob: func.InputStream) -> func.HttpResponse:
 
@@ -21,10 +23,11 @@ def main(req: func.HttpRequest, covblob: func.InputStream) -> func.HttpResponse:
 
     if output=="plot":
         plt.figure()
-        plot(pop,df)
+        CountryData.plot(pop,df)
         buf = io.BytesIO()
-        plt.savefig(buf, format = 'png')
-        return func.HttpResponse(body=buf,mimetype='image/png')
+        plt.savefig(buf, format = 'jpg')
+        buf.seek(0)
+        return func.HttpResponse(body=buf.read(),mimetype='image/jpeg')
     else:
-        res = df[1].to_csv()
+        res = df.to_csv()
         return func.HttpResponse(res)

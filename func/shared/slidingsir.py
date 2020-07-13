@@ -99,6 +99,7 @@ class CountryData():
 
         return country_data
 
+    @staticmethod
     def plot(population,df,ax=None):
         n = 0 # get_start_index(df)
         start_date = df.iloc[n,0]

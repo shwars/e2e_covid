@@ -4,7 +4,7 @@ import base64
 
 import azure.functions as func
 
-from .slidingsir import *
+from ..shared.slidingsir import *
 
 
 def main(mytimer: func.TimerRequest, outblob: func.Out[bytes]) -> None:
