@@ -31,7 +31,7 @@ Ideally, we want to use code-based serverless Azure Function. There are three op
 
 1. On Azure Portal -- it is not very convenient, because we will need to download them to debug 
 1. Manually via Azure Function Core Tools - not well documented
-1. Via Visual Studio Code -- described [here](https://docs.microsoft.com/en-us/azure/developer/python/tutorial-vs-code-serverless-python-02)
+1. Via Visual Studio Code -- described [here](https://docs.microsoft.com/azure/developer/python/tutorial-vs-code-serverless-python-02?WT.mc_id=academic-0000-dmitryso)
 
 We will use the last method and do it through VS Code.
 
